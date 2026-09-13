@@ -53,6 +53,7 @@ dependencies {
     api(project(":worldedit-core-mc"))
 
     implementation(libs.neoforge)
+    implementation(libs.luckperms.api)
     implementation(libs.cuiProtocol.neoforge)
     jarJar(libs.cuiProtocol.neoforge) {
         attributes {

@@ -85,7 +85,9 @@ public final class CoreMcWorldNativeAccess implements WorldNativeAccess<LevelChu
                 flags |= Block.UPDATE_SKIP_ON_PLACE | Block.UPDATE_SKIP_SHAPE_UPDATE_ON_WIRE;
             }
         }
-        return chunk.setBlockState(position, state, flags);
+        BlockState old = chunk.getBlockState(position);
+        chunk.getLevel().setBlock(position, state, flags);
+        return old;
     }
 
     @Override

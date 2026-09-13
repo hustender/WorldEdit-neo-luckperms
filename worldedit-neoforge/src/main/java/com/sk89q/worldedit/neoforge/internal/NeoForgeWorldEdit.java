@@ -19,6 +19,7 @@
 
 package com.sk89q.worldedit.neoforge.internal;
 
+import com.sk89q.worldedit.coremc.CoreMcPermissionsProvider;
 import com.sk89q.worldedit.coremc.internal.CoreMcMod;
 import com.sk89q.worldedit.coremc.internal.CoreMcPlatform;
 import com.sk89q.worldedit.coremc.internal.ThreadSafeCache;
@@ -86,6 +87,12 @@ public class NeoForgeWorldEdit extends CoreMcMod {
     @Override
     protected String getInternalVersion() {
         return container.getModInfo().getVersion().toString();
+    }
+
+    @Override
+    protected CoreMcPermissionsProvider createPermissionsProvider(CoreMcPlatform platform) {
+        //CoreMcPermissionsProvider provider = super.createPermissionsProvider(platform);
+        return new LuckoNeoForgePermissionsProvider();
     }
 
     // Proxy all events through a separate class to avoid loading all of CoreMcMod's methods immediately
